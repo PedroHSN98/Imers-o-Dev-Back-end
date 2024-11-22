@@ -1,5 +1,8 @@
 import express from 'express';
 
+console.log(process.env.STRING_CONEXAO)
+
+
 const posts = [
     { id: 1, descricao: 'Uma foto teste', imagem: 'https://placecats.com/millie/300/150' },
     { id: 2, descricao: 'Gato brincando com um novelo de lã', imagem: 'https://placecats.com/millie/300/150' },
