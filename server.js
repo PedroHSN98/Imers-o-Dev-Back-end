@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 app.listen(3000, () => {
-  console.log('Servidor escutando na porta 3000...');
+  console.log('Servidor escutando... ');
 });
 
 app.get('/posts', (req, res) => {
@@ -18,17 +18,12 @@ app.get('/posts', (req, res) => {
 });
 
 function buscarPostPorID(id) {
-  const index = posts.findIndex(post => post.id === Number(id));
-  return index;
+  return posts.findIndex((post) => {
+    return post.id === Number(id)
+  })
 }
 
 app.get('/posts/:id', (req, res) => {
-  const index = buscarPostPorID(req.params.id);
+  const index = buscarPostPorID(req.params.id)
   res.status(200).json(posts[index]);
-
-  if (index >= 0) {
-    res.status(200).json(posts[index]);
-  } else {
-    res.status(404).json({ message: 'Post não encontrado' });
-  }
 });
